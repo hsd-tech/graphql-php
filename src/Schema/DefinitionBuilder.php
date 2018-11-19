@@ -191,7 +191,6 @@ class DefinitionBuilder implements DefinitionBuilderInterface
      */
     protected function buildWrappedType(TypeNodeInterface $typeNode): TypeInterface
     {
-        /** @noinspection PhpUnhandledExceptionInspection */
         $typeDefinition = $this->buildType($this->getNamedTypeNode($typeNode));
         return $this->buildWrappedTypeRecursive($typeDefinition, $typeNode);
     }
@@ -520,6 +519,7 @@ class DefinitionBuilder implements DefinitionBuilderInterface
     /**
      * @param TypeNodeInterface $typeNode
      * @return NamedTypeNodeInterface
+     * @throws LanguageException
      */
     protected function getNamedTypeNode(TypeNodeInterface $typeNode): NamedTypeNodeInterface
     {
@@ -529,7 +529,11 @@ class DefinitionBuilder implements DefinitionBuilderInterface
             $namedType = $namedType->getType();
         }
 
-        /** @var NamedTypeNodeInterface $namedType */
+        if (!$namedType instanceof NamedTypeNodeInterface) {
+            throw new LanguageException(sprintf('Wrapped type must be an instance of %s',
+                NamedTypeNodeInterface::class));
+        }
+
         return $namedType;
     }
 
