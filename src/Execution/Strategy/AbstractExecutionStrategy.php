@@ -230,7 +230,7 @@ abstract class AbstractExecutionStrategy implements ExecutionStrategyInterface
      * @param ExecutionContext $context
      * @param ResolveInfo      $info
      *
-     * @return array|\Throwable
+     * @return array|PromiseInterface|\Throwable
      */
     protected function resolveFieldValueOrError(
         Field $field,
