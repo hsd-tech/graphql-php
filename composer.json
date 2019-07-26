@@ -1,6 +1,6 @@
 {
-    "name": "digiaonline/graphql",
-    "description": "A PHP7 implementation of the GraphQL specifications.",
+    "name": "hsd-tech/graphql",
+    "description": "A PHP7 implementation of the GraphQL specifications. Fork",
     "type": "library",
     "license": "MIT",
     "authors": [
